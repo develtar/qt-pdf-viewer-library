@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/add_white_24dp.svg</file>
+        <file>icons/arrow_back_white_24dp.svg</file>
+        <file>icons/arrow_downward_white_24dp.svg</file>
+        <file>icons/arrow_upward_white_24dp.svg</file>
+        <file>icons/remove_white_24dp.svg</file>
+        <file>icons/rotate_right_white_24dp.svg</file>
+        <file>icons/search_white_24dp.svg</file>
+        <file>icons/tune_white_24dp.svg</file>
+        <file>icons/aspect_ratio_white_24dp.svg</file>
+        <file>icons/crop_free_white_24dp.svg</file>
+        <file>icons/forward_white_24dp.svg</file>
+        <file>icons/backward_white_24dp.svg</file>
+        <file>icons/view_vertical_white_24dp.svg</file>
+        <file>icons/view_wrapped_white_24dp.svg</file>
+        <file>icons/view_horizontal_white_24dp.svg</file>
+        <file>icons/expand_vertical_white_24dp.svg</file>
+        <file>icons/expand_horizontal_white_24dp.svg</file>
+        <file>icons/rotate_left_white_24dp.svg</file>
+        <file>icons/table_chart_white_24dp.svg</file>
+        <file>icons/text_format_white_24dp.svg</file>
+        <file>icons/touch_app_white_24dp.svg</file>
+    </qresource>
+</RCC>

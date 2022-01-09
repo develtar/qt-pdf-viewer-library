@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>fonts/PathwayGothicOne-Regular.ttf</file>
+    </qresource>
+</RCC>

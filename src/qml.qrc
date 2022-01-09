@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>sample/PdfPage.qml</file>
+        <file>sample.pdf</file>
+        <file>sample/components/Button.qml</file>
+        <file>sample/components/TextField.qml</file>
+        <file>sample/app/OptionPageSelection.qml</file>
+        <file>sample/app/OptionPageScaling.qml</file>
+        <file>sample/app/OptionPageSearch.qml</file>
+        <file>sample/app/OptionPageScrollMode.qml</file>
+        <file>sample/app/BaseOptionSection.qml</file>
+        <file>sample/app/OptionPageRotation.qml</file>
+        <file>sample/app/PreviewPages.qml</file>
+        <file>sample/app/permissions/BasePermissionsManager.qml</file>
+        <file>sample/app/permissions/AndroidPermissionsManager.qml</file>
+    </qresource>
+</RCC>

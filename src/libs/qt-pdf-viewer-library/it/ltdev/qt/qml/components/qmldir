@@ -1,0 +1,3 @@
+module it.ltdev.qt.qml.components
+
+PdfView 1.0 PdfView.qml

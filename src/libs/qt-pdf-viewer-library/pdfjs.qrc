@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pdfjs/debugger.js</file>
+        <file>pdfjs/pdf.js</file>
+        <file>pdfjs/pdf.worker.js</file>
+        <file>pdfjs/pdf.viewer.css</file>
+        <file>pdfjs/viewer.css</file>
+        <file>pdfjs/viewer.html</file>
+        <file>pdfjs/viewer.js</file>
+        <file>pdfjs/pdf.viewer.bridge.js</file>
+        <file>pdfjs/qwebchannel.js</file>
+    </qresource>
+</RCC>
