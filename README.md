@@ -3,6 +3,7 @@
 # Qt Pdf Viewer Library
 The `qt-pdf-viewer-library` is a `qml` wrapper of `pdf.js` library which allows you to render `PDF` files in a `WebView`. This library also works for Android devices, and it uses `WebSocketServer`, `WebSocketTransport` and `WebChannel` to exchange data between qml and the browser environment.
 
+<img style="max-width:112px;" src="res/qt-pdf-viewer-logo.png"/>
 
 ## 1.0. Dependencies
 The `qt modules` needed by the library are:
