@@ -58,11 +58,16 @@ int main(int argc, char *argv[])
 
   // Initialize QtPdfViewer library
   // To make the pdf module to function correctly across all platforms,
-  // it is necessary to call QtPdfViewerInitializer::initialize() before creating
-  // the QGuiApplication instance.
+  // it is necessary to call QtPdfViewerInitializer::initialize()
+  // before in Qt>= 5.15.0, or after in Qt<5.15.0, creating
+  // the QGuiApplication instance
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
   LTDev::QtPdfViewerInitializer::initialize();
-
   QGuiApplication app(argc, argv);
+#else
+  QGuiApplication app(argc, argv);
+  LTDev::QtPdfViewerInitializer::initialize();
+#endif
 
   // Delete QtPdfViewer instance on app close
   QObject::connect(&app, &QGuiApplication::aboutToQuit, LTDev::QtPdfViewerInitializer::getInstance(), LTDev::QtPdfViewerInitializer::deleteInstance);
