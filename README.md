@@ -7,7 +7,6 @@ The `qt-pdf-viewer-library` is a `qml` wrapper of `pdf.js` library which allows 
 
 ## 1.0. Dependencies
 The `qt modules` needed by the library are:
-- `quickcontrols2`
 - `webchannel`
 - `websockets`
 - `webview`
@@ -23,7 +22,12 @@ The libraries used to create the `qt-pdf-viewer-library` are:
 
 
 ## 1.1. Testing
-The `qt-pdf-viewer-library` has been tested on the following `Android` devices:
+The `qt-pdf-viewer-library` has been tested on the following `qt` versions:
+
+- `Qt 5.15.2` (Desktop and Android)
+- `Qt 6.2.2` (Desktop)
+
+on the following `Android` devices:
 - `Galaxy Nexus, API 22, Android 5.1`
 - `Nexus S, API 23, Android 6.0`
 - `Nexus S, API 24, Android 7.0`

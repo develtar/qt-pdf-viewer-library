@@ -24,6 +24,7 @@
  *
  */
 #include "fileutils.h"
+
 namespace LTDev {
 
 FileUtils::FileUtils(QObject *parent) : QObject(parent)
@@ -46,7 +47,13 @@ void FileUtils::write(const QString &fileContent, const QString &filePath){
     // Write into file
     if ( file.open(QIODevice::ReadWrite| QIODevice::Truncate | QIODevice::Text)) {
         QTextStream stream( &file );
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
         stream << fileContent << Qt::endl;
+#else
+        stream << fileContent << endl;
+#endif
+
         file.close();
     }
 }
@@ -101,6 +108,14 @@ bool FileUtils::exists(const QString &path)
     return  QFile::exists(path) || QFileInfo::exists(QUrl(path).toString()) || QFileInfo::exists(QUrl(path).toLocalFile());
 }
 
+/**
+ * Copies the source folder in the destination folder.
+ *
+ * @param sourceFolder: the folder to copy
+ * @param destFolder: the destination folder
+ *
+ * @return bool
+ */
 bool FileUtils::copyDirs(const QString &sourceFolder, const QString &destFolder)
 {
     // Check if source folder exists

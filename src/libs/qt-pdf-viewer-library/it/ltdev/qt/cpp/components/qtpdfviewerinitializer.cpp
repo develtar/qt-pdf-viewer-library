@@ -34,8 +34,8 @@ namespace LTDev {
 void QtPdfViewerInitializer::initialize()
 {
     // To make the Qt WebView module function correctly across all platforms,
-    // it is necessary to call QtWebView::initialize() before creating
-    // the QGuiApplication instance.
+    // it is necessary to call QtWebView::initialize() before in Qt>= 5.15.0, or after in Qt<5.15.0, creating
+    // the QGuiApplication instance
     QtWebView::initialize();
 
     // Expose classes to qml

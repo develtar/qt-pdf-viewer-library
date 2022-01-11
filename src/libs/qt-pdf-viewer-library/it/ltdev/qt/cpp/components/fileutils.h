@@ -45,11 +45,35 @@ class FileUtils : public QObject
 public:
     explicit FileUtils(QObject *parent = nullptr);
 
+    /**
+    * @brief Writes the passed content in the provided path.
+    **/
     static void write(const QString &fileContent, const QString &filePath);
+
+    /**
+    * @brief Returns the content of the file passed
+    **/
     static QString read(QString filePath);
+
+
+    /**
+    * @brief Returns true if the (file or dir) path exists, false otherwise
+    **/
     static bool exists(const QString &path);
+
+    /**
+     * @brief Copies the source folder in the destination folder.
+     */
     static bool copyDirs(const QString &sourceFolder, const QString &destFolder);
+
+    /**
+    * @brief Removes a directory recursively.
+    **/
     static bool removeDir(const QString &dirPath);
+
+    /**
+    * @brief Concatenates the given paths.
+    **/
     static QString joinPaths(const QStringList &paths);
 signals:
 

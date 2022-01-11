@@ -6,6 +6,8 @@
 #include <QJsonParseError>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QDebug>
+
 namespace LTDev {
 
 

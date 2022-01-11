@@ -29,12 +29,13 @@
 #include <QObject>
 #include <QtWebView/QtWebView>
 #include <QQmlApplicationEngine>
+#include <QtQml>
 
 #include "fileutils.h"
 #include "WebSocketTransport.h"
 #include "singleton.cpp"
 
-#define PDF_VIEWER_VERSION "1.0.000"
+#define PDF_VIEWER_VERSION "1.0.001"
 
 namespace LTDev {
 
