@@ -359,8 +359,16 @@ function QObject(name, data, webChannel)
         var methodName = methodData[0];
         var methodIdx = methodData[1];
 
-        // Fully specified methods are invoked by id, others by name for host-side overload resolution
-        var invokedMethod = methodName[methodName.length - 1] === ')' ? methodIdx : methodName
+        // @note: to support older versions of Qt (<5.15) the methods should be only invoked by id.
+        // @see: https://bugreports.qt.io/browse/QTBUG-83495
+        // This will prevent the following error on those versions:
+        // "Cannot invoke unknown method of index -1 on object QObject_QML_2"
+        //
+        // when declaring (which supports host-side overload resolution when methods are invoked by name):
+        // var invokedMethod = methodName[methodName.length - 1] === ')' ? methodIdx : methodName
+        //
+        var invokedMethod = methodIdx
+
 
         object[methodName] = function() {
             var args = [];

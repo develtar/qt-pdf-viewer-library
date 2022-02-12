@@ -24,6 +24,7 @@ The libraries used to create the `qt-pdf-viewer-library` are:
 ## 1.1. Testing
 The `qt-pdf-viewer-library` has been tested on the following `qt` versions:
 
+- `Qt 5.12.4` (Desktop)
 - `Qt 5.15.2` (Desktop and Android)
 - `Qt 6.2.2` (Desktop)
 
