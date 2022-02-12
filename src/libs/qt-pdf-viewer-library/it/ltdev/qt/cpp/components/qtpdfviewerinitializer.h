@@ -35,7 +35,7 @@
 #include "WebSocketTransport.h"
 #include "singleton.cpp"
 
-#define PDF_VIEWER_VERSION "1.0.001"
+#define PDF_VIEWER_VERSION "1.0.002"
 
 namespace LTDev {
 
