@@ -1194,15 +1194,9 @@ var PDFViewerApplication = {
       return;
     }
     if (!this.supportsPrinting) {
-      this.l10n.get('printing_not_supported', null, 'Warning: Printing is not fully supported by ' + 'this browser.').then(function (printMessage) {
-        _this8.error(printMessage);
-      });
       return;
     }
     if (!this.pdfViewer.pageViewsReady) {
-      this.l10n.get('printing_not_ready', null, 'Warning: The PDF is not fully loaded for printing.').then(function (notReadyMessage) {
-        window.alert(notReadyMessage);
-      });
       return;
     }
     var pagesOverview = this.pdfViewer.getPagesOverview();
@@ -3324,9 +3318,6 @@ var PDFSidebar = function () {
       if (this.disableNotification) {
         return;
       }
-      this.l10n.get('toggle_sidebar_notification.title', null, 'Toggle Sidebar (document contains outline/attachments)').then(function (msg) {
-        _this.toggleButton.title = msg;
-      });
       if (!this.isOpen) {
         this.toggleButton.classList.add(UI_NOTIFICATION_CLASS);
       } else if (view === this.active) {
@@ -3370,9 +3361,6 @@ var PDFSidebar = function () {
       for (view in SidebarView) {
         removeNotification(SidebarView[view]);
       }
-      this.l10n.get('toggle_sidebar.title', null, 'Toggle Sidebar').then(function (msg) {
-        _this2.toggleButton.title = msg;
-      });
     }
   }, {
     key: '_addEventListeners',
@@ -7106,9 +7094,6 @@ var PDFThumbnailView = function () {
     this.l10n = l10n;
     var anchor = document.createElement('a');
     anchor.href = linkService.getAnchorUrl('#page=' + id);
-    this.l10n.get('thumb_page_title', { page: id }, 'Page {{page}}').then(function (msg) {
-      anchor.title = msg;
-    });
     anchor.onclick = function () {
       linkService.page = id;
       return false;
@@ -7224,9 +7209,6 @@ var PDFThumbnailView = function () {
       if (this.disableCanvasToImageConversion) {
         this.canvas.id = id;
         this.canvas.className = className;
-        this.l10n.get('thumb_page_canvas', { page: this.pageId }, 'Thumbnail of Page {{page}}').then(function (msg) {
-          _this.canvas.setAttribute('aria-label', msg);
-        });
         this.div.setAttribute('data-loaded', true);
         this.ring.appendChild(this.canvas);
         return;
@@ -7234,9 +7216,6 @@ var PDFThumbnailView = function () {
       var image = document.createElement('img');
       image.id = id;
       image.className = className;
-      this.l10n.get('thumb_page_canvas', { page: this.pageId }, 'Thumbnail of Page {{page}}').then(function (msg) {
-        image.setAttribute('aria-label', msg);
-      });
       image.style.width = this.canvasWidth + 'px';
       image.style.height = this.canvasHeight + 'px';
       image.src = this.canvas.toDataURL();
@@ -7344,19 +7323,9 @@ var PDFThumbnailView = function () {
       var _this3 = this;
 
       this.pageLabel = typeof label === 'string' ? label : null;
-      this.l10n.get('thumb_page_title', { page: this.pageId }, 'Page {{page}}').then(function (msg) {
-        _this3.anchor.title = msg;
-      });
       if (this.renderingState !== _pdf_rendering_queue.RenderingStates.FINISHED) {
         return;
       }
-      this.l10n.get('thumb_page_canvas', { page: this.pageId }, 'Thumbnail of Page {{page}}').then(function (ariaLabel) {
-        if (_this3.image) {
-          _this3.image.setAttribute('aria-label', ariaLabel);
-        } else if (_this3.disableCanvasToImageConversion && _this3.canvas) {
-          _this3.canvas.setAttribute('aria-label', ariaLabel);
-        }
-      });
     }
   }, {
     key: 'pageId',
@@ -9845,20 +9814,11 @@ var Toolbar = function () {
           items.pageNumber.type = 'text';
         } else {
           items.pageNumber.type = 'number';
-          this.l10n.get('of_pages', { pagesCount: pagesCount }, 'of {{pagesCount}}').then(function (msg) {
-            items.numPages.textContent = msg;
-          });
         }
         items.pageNumber.max = pagesCount;
       }
       if (this.hasPageLabels) {
         items.pageNumber.value = this.pageLabel;
-        this.l10n.get('page_of_pages', {
-          pageNumber: pageNumber,
-          pagesCount: pagesCount
-        }, '({{pageNumber}} of {{pagesCount}})').then(function (msg) {
-          items.numPages.textContent = msg;
-        });
       } else {
         items.pageNumber.value = pageNumber;
       }
@@ -9867,23 +9827,6 @@ var Toolbar = function () {
       items.zoomOut.disabled = scale <= _ui_utils.MIN_SCALE;
       items.zoomIn.disabled = scale >= _ui_utils.MAX_SCALE;
       var customScale = Math.round(scale * 10000) / 100;
-      this.l10n.get('page_scale_percent', { scale: customScale }, '{{scale}}%').then(function (msg) {
-        var options = items.scaleSelect.options;
-        var predefinedValueFound = false;
-        for (var i = 0, ii = options.length; i < ii; i++) {
-          var option = options[i];
-          if (option.value !== scaleValue) {
-            option.selected = false;
-            continue;
-          }
-          option.selected = true;
-          predefinedValueFound = true;
-        }
-        if (!predefinedValueFound) {
-          items.customScaleOption.textContent = msg;
-          items.customScaleOption.selected = true;
-        }
-      });
     }
   }, {
     key: 'updateLoadingIndicatorState',
