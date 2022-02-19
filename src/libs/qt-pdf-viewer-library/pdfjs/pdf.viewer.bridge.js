@@ -101,6 +101,10 @@ function connectPdfViewerSignals(){
         backend.updateToolMode(evt.tool)
     });
 
+    PDFViewerApplication.pdfViewer.eventBus.on('erroroccurred', function(evt){
+        console.error("Error: "+evt.msg)
+    });
+
     // Signal that html viewer page has been loaded
     backend.viewerLoaded()
 }

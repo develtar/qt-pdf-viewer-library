@@ -822,17 +822,28 @@ var PDFViewerApplication = {
       var message = exception && exception.message;
       var loadingErrorMessage = void 0;
       if (exception instanceof _pdfjsLib.InvalidPDFException) {
-        loadingErrorMessage = _this3.l10n.get('invalid_file_error', null, 'Invalid or corrupted PDF file.');
+        loadingErrorMessage =  _this3.l10n.getText('Invalid or corrupted PDF file.');
       } else if (exception instanceof _pdfjsLib.MissingPDFException) {
-        loadingErrorMessage = _this3.l10n.get('missing_file_error', null, 'Missing PDF file.');
+        loadingErrorMessage = _this3.l10n.getText('Missing PDF file.');
       } else if (exception instanceof _pdfjsLib.UnexpectedResponseException) {
-        loadingErrorMessage = _this3.l10n.get('unexpected_response_error', null, 'Unexpected server response.');
+        loadingErrorMessage = _this3.l10n.getText('Unexpected server response.');
       } else {
-        loadingErrorMessage = _this3.l10n.get('loading_error', null, 'An error occurred while loading the PDF.');
+        loadingErrorMessage = _this3.l10n.getText('An error occurred while loading the PDF.');
       }
+
       return loadingErrorMessage.then(function (msg) {
+
+          _this3.eventBus.dispatch('erroroccurred', {
+            source: _this3,
+            msg: msg
+          });
+
+          // This will notify the html to show the error message via dialog
+          // TODO: remove
         _this3.error(msg, { message: message });
-        throw new Error(msg);
+
+//          // This will throw the meassage to the console
+//        throw new Error(msg);
       });
     });
   },
@@ -859,23 +870,24 @@ var PDFViewerApplication = {
   },
   fallback: function fallback(featureId) {},
   error: function error(message, moreInfo) {
-    var moreInfoText = [this.l10n.get('error_version_info', {
-      version: _pdfjsLib.version || '?',
-      build: _pdfjsLib.build || '?'
-    }, 'PDF.js v{{version}} (build: {{build}})')];
+      var pdfjsLibText = "PDF.js v{{"+_pdfjsLib.version+"}} (build: {{"+_pdfjsLib.build+"}})";
+    var moreInfoText = [this.l10n.getText(pdfjsLibText)];
+
     if (moreInfo) {
-      moreInfoText.push(this.l10n.get('error_message', { message: moreInfo.message }, 'Message: {{message}}'));
+      moreInfoText.push(this.l10n.getText("Message: {{"+moreInfo.message+"}}"));
+
       if (moreInfo.stack) {
-        moreInfoText.push(this.l10n.get('error_stack', { stack: moreInfo.stack }, 'Stack: {{stack}}'));
+          moreInfoText.push(this.l10n.getText("Stack: {{"+moreInfo.stack+"}}"));
       } else {
         if (moreInfo.filename) {
-          moreInfoText.push(this.l10n.get('error_file', { file: moreInfo.filename }, 'File: {{file}}'));
+            moreInfoText.push(this.l10n.getText("File: {{"+moreInfo.filename+"}}"));
         }
         if (moreInfo.lineNumber) {
-          moreInfoText.push(this.l10n.get('error_line', { line: moreInfo.lineNumber }, 'Line: {{line}}'));
+            moreInfoText.push(this.l10n.getText("Line: {{"+moreInfo.lineNumber+"}}"));
         }
       }
     }
+
     var errorWrapperConfig = this.appConfig.errorWrapper;
     var errorWrapper = errorWrapperConfig.container;
     errorWrapper.removeAttribute('hidden');
@@ -1375,7 +1387,7 @@ var validateFileURL = void 0;
       }
     } catch (ex) {
       var message = ex && ex.message;
-      PDFViewerApplication.l10n.get('loading_error', null, 'An error occurred while loading the PDF.').then(function (loadingErrorMessage) {
+      PDFViewerApplication.l10n.getText('An error occurred while loading the PDF.').then(function (loadingErrorMessage) {
         PDFViewerApplication.error(loadingErrorMessage, { message: message });
       });
       throw ex;
@@ -1462,7 +1474,7 @@ function webViewerInitialized() {
   Promise.resolve().then(function () {
     webViewerOpenFileViaURL(file);
   }).catch(function (reason) {
-    PDFViewerApplication.l10n.get('loading_error', null, 'An error occurred while loading the PDF.').then(function (msg) {
+    PDFViewerApplication.l10n.getText('An error occurred while loading the PDF.').then(function (msg) {
       PDFViewerApplication.error(msg, reason);
     });
   });
@@ -3704,6 +3716,12 @@ exports.getGlobalEventBus = exports.attachDOMEventsToEventBus = undefined;
 var _ui_utils = __webpack_require__(2);
 
 function attachDOMEventsToEventBus(eventBus) {
+  // Custom signal to catch pdf.js errors
+  eventBus.on('erroroccurred', function () {
+      var event = document.createEvent('CustomEvent');
+      event.initCustomEvent('erroroccurred', true, true, {});
+      window.dispatchEvent(event);
+  });
   eventBus.on('documentload', function () {
     var event = document.createEvent('CustomEvent');
     event.initCustomEvent('documentload', true, true, {});
@@ -10363,6 +10381,13 @@ var GenericL10n = function () {
       });
     }
   }, {
+     key: 'getText',
+     value: function getText(text) {
+         return new Promise((resolve, reject) => {
+                                resolve(text);
+                              });
+     }
+ }, {
     key: 'translate',
     value: function translate(element) {
       return this._ready.then(function (l10n) {

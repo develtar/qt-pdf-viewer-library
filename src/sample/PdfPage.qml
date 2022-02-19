@@ -171,7 +171,7 @@ Rectangle {
 
                     if(SampleUtils.pdfExists(pdfPath)){
                         // Load pdf only when viewer is ready
-                        pdfView.load(pdfPath)
+                        pdfView.load("ds")
                     } else {
                         console.warn("Pdf ", pdfPath, "not found")
                     }
