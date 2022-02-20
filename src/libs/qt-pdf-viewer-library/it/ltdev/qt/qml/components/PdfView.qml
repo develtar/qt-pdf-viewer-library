@@ -35,6 +35,7 @@ Item {
     width: parent.width
     height: 500
 
+    signal error(var message)
     signal pdfLoaded()
     signal viewerLoaded()
 
@@ -264,6 +265,17 @@ Item {
             The ID under which this object will be known in the browser environment
         */
         WebChannel.id: "backend"
+
+        /*
+            Signals that some error occurred.
+
+            @note: It is called from the browser environment.
+
+            @param message {JsonObject}: the error message object
+        */
+        function error(message){
+            root.error(message)
+        }
 
         /*
             Signals that the html viewer has been loaded.

@@ -36,7 +36,11 @@ Item {
     property var requestPermissions: function(permissions){
         for(var i=0; i<permissions.length; i++){
             var permission = permissions[i]
-            console.debug("Requesting permission: ", permission)
+
+            if(permission!==""){
+                console.debug("Requesting permission: ", permission)
+            }
+
             permissionGranted(permission)
         }
     }

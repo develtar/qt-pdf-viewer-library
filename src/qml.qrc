@@ -14,5 +14,6 @@
         <file>sample/app/PreviewPages.qml</file>
         <file>sample/app/permissions/BasePermissionsManager.qml</file>
         <file>sample/app/permissions/AndroidPermissionsManager.qml</file>
+        <file>sample/components/ContainerInfo.qml</file>
     </qresource>
 </RCC>
