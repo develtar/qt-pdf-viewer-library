@@ -182,7 +182,7 @@ Rectangle {
                     pdfView.visible = false
                     pdfView.opacity = 0
 
-                    console.debug("Error: ", message)
+                    console.error("Error: ", message)
 
                     // Parse json error message
                     var json = JSON.parse(message)

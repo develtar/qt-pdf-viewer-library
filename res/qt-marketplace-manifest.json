@@ -1,0 +1,23 @@
+{
+    "$schema": "https://github.com/develtar/qt-pdf-viewer-library",
+    "title": "Qt Pdf Viewer Library",
+    "extensionType": ["library"],
+    "version": "1.0.003",
+    "vendor": {
+        "name": "LT Dev",
+        "url": ""
+    },
+    "icon": "https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/qt-pdf-viewer-logo.png",
+    "contact": "Leonardo Tarollo <develtar@gmail.com>",
+    "copyright": ["Leonardo Tarollo"],
+    "authors": ["Leonardo Tarollo"],
+    "licenses": [
+        {
+            "licenseType": "Apache 2.0",
+            "licenseUrl": "https://github.com/develtar/qt-pdf-viewer-library/blob/master/LICENSE"
+        }
+    ],
+    "created": "2022-01-09",
+    "platforms": ["Android 6.0 or later", "Linux", "Windows"],
+    "qtVersions": ["5.15.2"]
+} 

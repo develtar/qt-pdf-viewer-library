@@ -12,6 +12,7 @@ The `qt modules` needed by the library are:
 - `webview`
 
 
+
 #### 1.0.1. Libraries
 The libraries used to create the `qt-pdf-viewer-library` are:
 - `PDF.js` version `2.0.550` (`Apache License 2.0`): you can retrieve it from this link: https://github.com/mozilla/pdf.js.
@@ -95,6 +96,15 @@ ApplicationWindow {
               // Load pdf only when viewer is ready
               pdfView.load("path/to/my/document.pdf")
           }
+
+          onPdfLoaded: {
+              // Pdf has been correctly loaded
+          }
+
+          onError: {
+             // Some error occurred
+             console.error("Error: ", message)
+          }
       }
 }
 ```
@@ -146,6 +156,8 @@ the following `methods`:
 - `searchTextOccurance(query, phraseSearch, caseSensitive, highlightAll, findPrevious)`: searches for the next occurance of the given text in the pdf document
 
 and the following `signals`:
+- `error(var message)`: emitted when some error occurs during pdf loading. The `message` parameter is a `json string` which contains the error's informations.
+
 - `pdfLoaded()`: emitted when pdf is entirely loaded
 
 - `viewerLoaded()`: emitted when viewer is loaded and ready
@@ -159,9 +171,9 @@ The sample app implements all operations provided by the library, like `rotation
 <img src="res/screenshots/android/pdf-viewer-3.webp"/> | <img src="res/screenshots/android/pdf-viewer-4.webp"/>| <img src="res/screenshots/android/pdf-viewer-5.webp"/> |
 
 
-
 Below some screenshot for the desktop version:
 
+<img style="max-width: 100%;" src="res/screenshots/desktop/pdf-viewer-5.webp"/>
 <img style="max-width: 100%;" src="res/screenshots/desktop/pdf-viewer-1.webp"/>
 <img style="max-width: 100%;" src="res/screenshots/desktop/pdf-viewer-2.webp"/>
 <img style="max-width: 100%;" src="res/screenshots/desktop/pdf-viewer-3.webp"/>
