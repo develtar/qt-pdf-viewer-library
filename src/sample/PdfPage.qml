@@ -99,6 +99,9 @@ Rectangle {
                     height: 24
                 }
 
+                /*
+                    PDF Options
+                */
                 Flow {
                     id: containerOptions
                     visible: btnOptions.optionsEnabled
@@ -135,6 +138,9 @@ Rectangle {
                     height: 24
                 }
 
+                /*
+                    PDF pages preview
+                */
                 Item {
                     id: containerPreviewPages
                     visible: btnShowPreview.previewEnabled
@@ -154,31 +160,75 @@ Rectangle {
         } // Top bar
 
 
-        Item {
+        Rectangle {
             id: pdfContainer
             width: parent.width
             height: parent.height-closedTopbarHeight
-
-
+            color: "lightgrey"
 
             LTDev.PdfView {
                 id: pdfView
                 anchors.fill: parent
+
+                // Setting visibility/opacity to manage loading states (eg. showing an error message or a busy indicator):
+                // - on Desktop: setting the opacity (only) should be sufficient to managing loading states
+                // - on Android: must be set both opacity and visibility to managing loading states
+                //
+                visible: false
+                opacity: 0
+
+                onError: {
+                    // Hide pdfview on error
+                    pdfView.visible = false
+                    pdfView.opacity = 0
+
+                    console.error("Error: ", message)
+
+                    // Parse json error message
+                    var json = JSON.parse(message)
+
+                    // Update container error text
+                    containerError.textView.text = "Error: "+json.error.generic + " " + json.error.detailed
+                }
 
                 onViewerLoaded: {
                     // Copy pdf sample from qrc to download folder
                     var pdfPath = SampleUtils.copyPdfSampleInDownloadFolder()
 
                     if(SampleUtils.pdfExists(pdfPath)){
+                        // To correctly load the pdf, pdfview must be visible
+                        pdfView.visible = true
+
                         // Load pdf only when viewer is ready
                         pdfView.load(pdfPath)
                     } else {
                         console.warn("Pdf ", pdfPath, "not found")
                     }
                 }
+
+                onPdfLoaded: {
+                    // Pdf has been correctly loaded, ensure pdf view visibility
+                    pdfView.visible = true
+                    pdfView.opacity = 1
+
+                    // Update container error text (no error occurred)
+                    containerError.textView.text = ""
+                }
+            }
+
+
+            /*
+                Error info
+            */
+            CustomComponents.ContainerInfo {
+                id: containerError
+                visible: !pdfView.visible && textView.text.length>0
+
+                width: Math.min(parent.width/2, 400)
+                height: 65
+                anchors.centerIn: parent
             }
         }
-
 
     }
 

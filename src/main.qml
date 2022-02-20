@@ -42,7 +42,9 @@ ApplicationWindow {
 
             // Connect permissions results signals
             permissionManager.permissionGranted.connect(function(permission){
-                console.debug("Permission granted: ", JSON.stringify(permission))
+                if(permission.length>0){
+                    console.debug("Permission granted:", permission)
+                }
 
                 if((permission===permission_read_external_storage && permissionManager.isPermissionGranted(permission_write_external_storage))
                         || (permission===permission_write_external_storage && permissionManager.isPermissionGranted(permission_read_external_storage))){
@@ -50,7 +52,9 @@ ApplicationWindow {
                 }
             })
             permissionManager.permissionDenied.connect(function(permission){
-                console.debug("Permission denied: ", JSON.stringify(permission))
+                if(permission.length>0){
+                    console.debug("Permission denied:", permission)
+                }
 
                 if(permission===permission_read_external_storage || permission===permission_write_external_storage){
                     Qt.quit()
@@ -69,7 +73,7 @@ ApplicationWindow {
         id: loaderPermissionsManager
 
         onItemChanged: {
-            console.debug("item", item)
+            console.debug("Permission manager:", item)
             initPermissionsManager(item)
         }
 
