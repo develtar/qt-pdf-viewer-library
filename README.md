@@ -1,6 +1,13 @@
 <img style="max-width: 100%;" src="res/qtpdfviewer-header.png"/>
 
 # Qt Pdf Viewer Library
+
+[![license](https://custom-icon-badges.herokuapp.com/github/license/develtar/qt-pdf-viewer-library?color=blue&logo=repo)](https://github.com/develtar/qt-pdf-viewer-library/blob/master/LICENSE) [![latest-release](https://badgen.net/github/release/develtar/qt-pdf-viewer-library?color=purple&logo=tag)](https://github.com/develtar/qt-pdf-viewer-library/releases) [![stars](https://custom-icon-badges.herokuapp.com/github/stars/develtar/qt-pdf-viewer-library?color=yellow&logo=star)](https://github.com/develtar/qt-pdf-viewer-library/stargazers/)
+
+![device-android](https://custom-icon-badges.herokuapp.com/badge/android_support-yes-green?color=green&logo=device-mobile&logoColor=white) ![device-desktop](https://custom-icon-badges.herokuapp.com/badge/desktop_support-yes-green?color=green&logo=device-desktop&logoColor=white) ![code-size](https://custom-icon-badges.herokuapp.com/github/languages/code-size/develtar/qt-pdf-viewer-library?logo=file-code&logoColor=white&color=lightgray)
+
+
+
 The `qt-pdf-viewer-library` is a `qml` wrapper of `pdf.js` library which allows you to render `PDF` files in a `WebView`. This library also works for Android devices, and it uses `WebSocketServer`, `WebSocketTransport` and `WebChannel` to exchange data between qml and the browser environment.
 
 <img style="max-width:112px;" src="res/qt-pdf-viewer-logo.png"/>
