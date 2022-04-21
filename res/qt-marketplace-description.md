@@ -1,7 +1,3 @@
-
-<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/qtpdfviewer-header.png"/>
-<p></p>
-
 # Qt Pdf Viewer Library
 The `qt-pdf-viewer-library` is a `qml` wrapper of `pdf.js` library which allows you to render `PDF` files in a `WebView`. This library also works for Android devices, and it uses `WebSocketServer`, `WebSocketTransport` and `WebChannel` to exchange data between qml and the browser environment.
 
@@ -12,7 +8,7 @@ The `qt modules` needed by the library are:
 - `webview`
 
 ### Features
-- the library is `open source`
+- the library is `open source` (`Apache-2.0` license)
 
 - the library supports `desktop`, `embedded`, and `android` devices
 
@@ -43,19 +39,5 @@ on the following `Android` devices:
 and on the following `os`:
 - `Linux KDE 20.04`
 
-### Android Screenshots
-Below some screenshots for `Android`:
-
-
-<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/screenshots/android/pdf-viewer-showcase.webp"/>
-
-
-### Desktop Screenshots
-Below some screenshots for `desktop`:
-
-
-<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/screenshots/desktop/pdf-viewer-5.webp"/>
-<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/screenshots/desktop/pdf-viewer-1.webp"/>
-<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/screenshots/desktop/pdf-viewer-2.webp"/>
-<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/screenshots/desktop/pdf-viewer-3.webp"/>
-<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/screenshots/desktop/pdf-viewer-4.webp"/>
+### Screenshots
+The sample app and the screenshots can be found on [github](https://github.com/develtar/qt-pdf-viewer-library).
