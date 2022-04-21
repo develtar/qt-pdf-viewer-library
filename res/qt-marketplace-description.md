@@ -1,5 +1,5 @@
 
-<img style="max-width: 100%;" src="qtpdfviewer-header.png"/>
+<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/qtpdfviewer-header.png"/>
 <p></p>
 
 # Qt Pdf Viewer Library
@@ -46,17 +46,16 @@ and on the following `os`:
 ### Android Screenshots
 Below some screenshots for `Android`:
 
-| | | |
-:-------------------------:|:-------------------------:|:-------------------------:
-<img style="max-width: 100%;" src="screenshots/android/pdf-viewer-0.webp"/> | <img style="max-width: 100%;" src="screenshots/android/pdf-viewer-1.webp"/>| <img style="max-width: 100%;" src="screenshots/android/pdf-viewer-2.webp"/> |
-<img style="max-width: 100%;" src="screenshots/android/pdf-viewer-3.webp"/> | <img style="max-width: 100%;" src="screenshots/android/pdf-viewer-4.webp"/>| <img style="max-width: 100%;" src="screenshots/android/pdf-viewer-5.webp"/> |
+
+<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/screenshots/android/pdf-viewer-showcase.webp"/>
+
 
 ### Desktop Screenshots
 Below some screenshots for `desktop`:
 
 
-<img style="max-width: 100%;" src="screenshots/desktop/pdf-viewer-5.webp"/>
-<img style="max-width: 100%;" src="screenshots/desktop/pdf-viewer-1.webp"/>
-<img style="max-width: 100%;" src="screenshots/desktop/pdf-viewer-2.webp"/>
-<img style="max-width: 100%;" src="screenshots/desktop/pdf-viewer-3.webp"/>
-<img style="max-width: 100%;" src="screenshots/desktop/pdf-viewer-4.webp"/>
+<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/screenshots/desktop/pdf-viewer-5.webp"/>
+<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/screenshots/desktop/pdf-viewer-1.webp"/>
+<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/screenshots/desktop/pdf-viewer-2.webp"/>
+<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/screenshots/desktop/pdf-viewer-3.webp"/>
+<img style="max-width: 100%;" src="https://github.com/develtar/qt-pdf-viewer-library/tree/master/res/screenshots/desktop/pdf-viewer-4.webp"/>
