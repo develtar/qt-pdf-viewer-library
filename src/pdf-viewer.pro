@@ -30,6 +30,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 android {
+QT += androidextras
+ANDROID_MIN_SDK_VERSION = "21"
+ANDROID_TARGET_SDK_VERSION="33"
+
 # Android permissions tools library
 # @see: https://github.com/FalsinSoft/QtAndroidTools/tree/1.5.5
 QML_IMPORT_PATH += $$PWD/libs/android/QtAndroidTools-1.5.5/QtAndroidTools
