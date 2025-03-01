@@ -95,6 +95,13 @@ Item {
     function load(path){
         // Convert pdf to base64
         var base64 = QtPdfViewerInitializer.pdfToBase64(path)
+//        console.debug("base64: ", base64)
+
+        var msg = "Test string"
+        console.debug("load | Msg: ", msg)
+
+        backend.requestLoadDocument(msg)
+//        backend.requestLoadDocument(base64)
 
         // Load pdf
         webView.runJavaScript("loadDocument(\"%1\");".arg(base64))
@@ -253,11 +260,16 @@ Item {
     QtObject {
         id: backend
 
+        signal requestLoadDocument(string base64)
+
         /*
             The ID under which this object will be known in the browser environment
         */
         WebChannel.id: "backend"
 
+        function logMessage(level, message) {
+            console.log("JS [" + level + "]: " + message)
+        }
         /*
             Signals that some error has occurred.
 
@@ -355,9 +367,14 @@ Item {
         id: webView
 
         Component.onCompleted: {
+            console.debug("webView component on completed")
             QtPdfViewerInitializer.viewerChanged.connect(function(){
                 webView.url = "file://"+QtPdfViewerInitializer.viewer
+                console.debug("viewerChanged | url:", webView.url)
             })
+
+            // Ensure the JavaScript environment is initialized
+            webView.runJavaScript("console.log('WebView Initialized');")
 
             QtPdfViewerInitializer.initializeViewer()
         }
@@ -379,6 +396,11 @@ Item {
     */
     WebSocketTransport {
         id: transport
+
+
+        function transp(){
+            console.debug("hello")
+        }
     }
 
     /*
@@ -390,11 +412,15 @@ Item {
         port: 55222
 
         onClientConnected: {
+            console.debug("onClientConnected")
             if(webSocket.status === WebSocket.Open) {
                 channel.connectTo(transport)
                 webSocket.onTextMessageReceived.connect(transport.textMessageReceive)
                 transport.onMessageChanged.connect(webSocket.sendTextMessage)
+
             }
         }
     }
+
+
 }

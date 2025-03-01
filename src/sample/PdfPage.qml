@@ -192,6 +192,7 @@ Rectangle {
                 }
 
                 onViewerLoaded: {
+                    console.debug("onViewerLoaded")
                     // Copy pdf sample from qrc to download folder
                     var pdfPath = SampleUtils.copyPdfSampleInDownloadFolder()
 
@@ -207,6 +208,7 @@ Rectangle {
                 }
 
                 onPdfLoaded: {
+                    console.debug("onPdfLoaded")
                     // Pdf has been correctly loaded, ensure pdf view visibility
                     pdfView.visible = true
                     pdfView.opacity = 1

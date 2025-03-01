@@ -53,6 +53,30 @@ window.onload = function()
             // the channel.objects property
             backend = channel.objects.backend;
 
+            console.log = function(message) {
+                backend.logMessage("LOG", message);
+            };
+            console.debug = function(message) {
+                backend.logMessage("DEBUG", message);
+            };
+            console.error = function(message) {
+                backend.logMessage("ERROR", message);
+            };
+
+            // Connect the QML signal 'requestLoadDocument' to the JavaScript function loadDocument
+            if (backend.requestLoadDocument && backend.requestLoadDocument.connect) {
+                console.log("Signal requestLoadDocument connected!");
+
+                backend.requestLoadDocument.connect(function(base64){
+                    console.log("Received parameter: "+base64);
+
+                    loadDocument(base64)
+                });
+            } else {
+                console.error("Could not connect requestLoadDocument signal");
+            }
+
+
             // Connect signals emitted by the pdf viewer
             connectPdfViewerSignals()
         });
@@ -60,6 +84,7 @@ window.onload = function()
 
     socket.onerror = function(error) {
 //        alert("web channel error: " + error);
+        console.error("Web channel error", error);
     };
 }
 
@@ -97,6 +122,8 @@ function connectPdfViewerSignals(){
         backend.error(evt.msg)
     });
 
+    console.debug("Signals connected")
+
     // Signal that html viewer page has been loaded
     backend.viewerLoaded()
 }
@@ -108,11 +135,13 @@ function connectPdfViewerSignals(){
     @param base64 {string}: the base64 document to load
 */
 function loadDocument(base64){
+    console.debug("Loading document: "+"'"+base64+"'")
+
     // Delay load to allow the javascript
     // environment to be ready
     sleep(200).then(function() {
         var array = base64ToUint8Array(base64)
-
+        console.debug("Opening array: ", array)
         // Load pdf document as an Uint8Array
         PDFViewerApplication.open(array);
     });
