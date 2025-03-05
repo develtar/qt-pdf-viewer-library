@@ -22,6 +22,12 @@ int main(int argc, char *argv[])
     QtAndroidTools::initializeQmlTools();
 #endif
 
+#ifndef __ANDROID__
+    // Disable the sandbox before initializing QtWebEngine
+    // to allow the PdfView to correctly load the pdf
+    qputenv("QTWEBENGINE_DISABLE_SANDBOX", "1");
+#endif
+
 
     // Initialize QtPdfViewer library
     // To make the pdf module to function correctly across all platforms,
@@ -34,7 +40,6 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     LTDev::QtPdfViewerInitializer::initialize();
 #endif
-
 
 
     // Delete QtPdfViewerInitializer instance on app close
